@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
+	public Transform playerTransform;
 	private Rigidbody rb;
 	public float speed;
 	//public float jumpForce;
@@ -39,6 +40,8 @@ public class PlayerMovement : MonoBehaviour {
 			// Dividing by the length is cheaper than normalizing when we already have the length anyway
 			float directionLength = directionVector.magnitude;
 			directionVector = directionVector / directionLength;
+
+			directionVector = playerTransform.rotation * directionVector;
 			
 			// Make sure the length is no bigger than 1
 			directionLength = Mathf.Min(1.0f, directionLength);
