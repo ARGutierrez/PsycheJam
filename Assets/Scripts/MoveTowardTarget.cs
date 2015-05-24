@@ -6,14 +6,44 @@ public class MoveTowardTarget : MonoBehaviour {
     public Transform target;
     public float speed;
 
-    void Update()
+    public float closeEnough;
+
+    private Vector3 wanderDir;
+
+    void Start()
     {
-        move();
+        wanderDir = new Vector3(Random.Range(0f, 1f), 0.0f, Random.Range(0f, 1f));
+        transform.Rotate(wanderDir);
     }
 
-    void move()
+    void Update()
+    {
+        if (targetIsVisible() || closeToTarget())
+            moveTowardTarget();
+        else
+            wander();
+    }
+
+    bool targetIsVisible()
+    {
+        Vector3 dir = target.position - transform.position;
+        RaycastHit hit;
+        return Physics.Raycast(transform.position, dir, out hit) && hit.transform == target;
+    }
+
+    bool closeToTarget()
+    {
+        return closeEnough > Vector3.Distance(transform.position, target.position);
+    }
+
+    void moveTowardTarget()
     {
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+    }
+
+    void wander()
+    {
+        transform.position += transform.forward * speed * Time.deltaTime;
     }
 }
