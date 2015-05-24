@@ -5,18 +5,26 @@ public class SpawnMonster : MonoBehaviour {
 
     public GameObject monster;
     public float timeBetweenSpawn;
-	// Use this for initialization
+
+    //all spawners will see this static variable
+    public static int maxMonsters = 100;
+    public static int currentMonsters = 0;
+
 	void Start () {
         InvokeRepeating("spawn", 0f, timeBetweenSpawn);
 	}
 	
-	// Update is called once per frame
 	void Update () {
-
+        Debug.Log("Current:" + currentMonsters);
+        Debug.Log("Max:" + maxMonsters);
     }
 
     void spawn()
     {
-        Instantiate(monster, transform.position, Quaternion.identity);
+        if (currentMonsters < maxMonsters)
+        {
+            Instantiate(monster, transform.position, Quaternion.identity);
+            currentMonsters++;
+        }
     }
 }
