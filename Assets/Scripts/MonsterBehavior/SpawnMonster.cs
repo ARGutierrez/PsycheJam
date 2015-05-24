@@ -8,7 +8,7 @@ public class SpawnMonster : MonoBehaviour {
     public float timeBetweenSpawn;
 
     //all spawners will see these static variables
-    public static int maxMonsters = 1000;
+    public static int maxMonsters = 250;
     public static int currentMonsters = 0;
 
     public bool randomizeLocation;
@@ -20,17 +20,12 @@ public class SpawnMonster : MonoBehaviour {
 
     private static Transform player;
 
-	void Start () {
-
+	void Start () 
+    {
         boundaryMinX = GameObject.Find("Boundary").transform.position.x;
         boundaryMaxX = GameObject.Find("BoundaryXZ").transform.position.x;
         boundaryMinZ = GameObject.Find("Boundary").transform.position.z;
         boundaryMaxZ = GameObject.Find("BoundaryXZ").transform.position.z;
-
-        Debug.Log("x" + boundaryMinX);
-        Debug.Log("X" + boundaryMaxX);
-        Debug.Log("z" + boundaryMinZ);
-        Debug.Log("Z" + boundaryMaxZ);
 
         player = GameObject.Find("Player 1").transform;
 
@@ -48,7 +43,6 @@ public class SpawnMonster : MonoBehaviour {
         if (currentMonsters < maxMonsters)
         {
             Instantiate(monster, transform.position, Quaternion.identity);
-            currentMonsters++;
             if (randomizeLocation)
                 randomizePosition();
         }
