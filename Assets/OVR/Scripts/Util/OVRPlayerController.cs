@@ -28,6 +28,11 @@ using System.Collections.Generic;
 [RequireComponent(typeof(CharacterController))]
 public class OVRPlayerController : MonoBehaviour
 {
+	//Vincent edit: Hydra
+	private SixenseInput.Controller controllerL; //left Hydra controller
+	private SixenseInput.Controller controllerR; //right Hydra controller
+
+
 	/// <summary>
 	/// The rate acceleration during movement.
 	/// </summary>
@@ -104,6 +109,10 @@ public class OVRPlayerController : MonoBehaviour
 
 	void Awake()
 	{
+		//Vincent edit: Hydra
+		controllerL = SixenseInput.GetController (SixenseHands.LEFT);
+		controllerR = SixenseInput.GetController (SixenseHands.RIGHT);
+
 		Controller = gameObject.GetComponent<CharacterController>();
 
 		if(Controller == null)
@@ -145,6 +154,12 @@ public class OVRPlayerController : MonoBehaviour
 
 	protected virtual void Update()
 	{
+		//Vincent edit: Hydra
+		//if(controllerL == null)
+			controllerR = SixenseInput.GetController (SixenseHands.RIGHT);
+		//if(controllerR == null)
+			controllerL = SixenseInput.GetController (SixenseHands.LEFT);
+
 		if (useProfileData)
 		{
 			if (InitialPose == null)
@@ -303,9 +318,16 @@ public class OVRPlayerController : MonoBehaviour
 #if !UNITY_ANDROID // LeftTrigger not avail on Android game pad
 		moveInfluence *= 1.0f + OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.LeftTrigger);
 #endif
-
-		float leftAxisX = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.LeftXAxis);
-		float leftAxisY = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.LeftYAxis);
+		//Vincent edit: Hydra
+		float leftAxisX;
+		float leftAxisY;
+		if (controllerL != null && controllerL.Enabled && (controllerL.JoystickX != 0 || controllerL.JoystickY != 0)) {
+			leftAxisX = controllerL.JoystickX * 3;
+			leftAxisY = controllerL.JoystickY * 3;
+		} else {
+			leftAxisX = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.LeftXAxis);
+			leftAxisY = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.LeftYAxis);
+		}
 
 		if(leftAxisY > 0.0f)
 			MoveThrottle += ort * (leftAxisY * moveInfluence * Vector3.forward);
@@ -319,11 +341,46 @@ public class OVRPlayerController : MonoBehaviour
 		if(leftAxisX > 0.0f)
 			MoveThrottle += ort * (leftAxisX * moveInfluence * BackAndSideDampen * Vector3.right);
 
-		float rightAxisX = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.RightXAxis);
+		//Vincent edit: Hydra
+		float rightAxisX;
+		if (controllerR != null && controllerR.Enabled && controllerR.JoystickX != 0)
+			rightAxisX = controllerR.JoystickX;
+		else
+			rightAxisX = OVRGamepadController.GPC_GetAxis(OVRGamepadController.Axis.RightXAxis);
 
 		euler.y += rightAxisX * rotateInfluence;
 
 		transform.rotation = Quaternion.Euler(euler);
+	}
+
+	private Vector3 MoveWithHydra()
+	{
+		float horizontal = controllerL.JoystickX;
+		float vertical = controllerL.JoystickY;
+		
+		// Get the input vector from analog stick
+		Vector3 directionVector = new Vector3(horizontal, 0, vertical);
+		
+		if (directionVector != Vector3.zero)
+		{
+			// Get the length of the directon vector and then normalize it
+			// Dividing by the length is cheaper than normalizing when we already have the length anyway
+			float directionLength = directionVector.magnitude;
+			directionVector = directionVector / directionLength;
+			
+			//directionVector = playerTransform.rotation * directionVector;
+			
+			// Make sure the length is no bigger than 1
+			directionLength = Mathf.Min(1.0f, directionLength);
+			
+			// Make the input vector more sensitive towards the extremes and less sensitive in the middle
+			// This makes it easier to control slow speeds when using analog sticks
+			directionLength = directionLength * directionLength;
+			
+			// Multiply the normalized direction vector by the modified length
+			directionVector = directionVector * directionLength;
+		}
+		return directionVector;
 	}
 
 	/// <summary>
