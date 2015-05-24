@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveTowardTarget : MonoBehaviour {
+public class DefaultMonsterBehavior : MonoBehaviour
+{
 
-    public Transform target;
     public float speed;
 
     public float closeEnough;
 
     private Vector3 wanderDir;
+    private static Transform target;
 
     void Start()
     {
+        target = GameObject.Find("Player 1").transform;
         wanderDir = new Vector3(Random.Range(0f, 1f), 0.0f, Random.Range(0f, 1f));
         transform.Rotate(wanderDir);
     }

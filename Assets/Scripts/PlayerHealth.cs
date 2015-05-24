@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class PlayerHealth : MonoBehaviour {
+
+    public bool invincible = false; //for debugging or fun
+
     public int maxHealth = 100;
     public int currentHealth;
 
@@ -19,7 +22,8 @@ public class PlayerHealth : MonoBehaviour {
     {
         if (collision.collider.CompareTag("Enemy"))
         {
-            takeDamage(5);
+            if (!invincible)
+                takeDamage(5);
         }
     }
 
