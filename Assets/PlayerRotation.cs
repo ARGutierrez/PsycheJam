@@ -13,17 +13,18 @@ public class PlayerRotation : MonoBehaviour {
 		yRotation = transform.eulerAngles.y;
 		controllerR = SixenseInput.GetController (SixenseHands.RIGHT); // get left controller
 	}
-	
+	void Update() {
+		if(controllerR != null && controllerR.Enabled && controllerR.GetButtonDown(SixenseButtons.JOYSTICK))
+			OVRManager.display.RecenterPose();
+	}
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
 		if (controllerR == null)
 			controllerR = SixenseInput.GetController (SixenseHands.RIGHT);
 		if (controllerR != null && controllerR.Enabled && controllerR.JoystickX != 0)
 			MoveWithHydra ();
 		else
 			MoveWithDancePad ();
-		if(controllerR.GetButtonDown(SixenseButtons.JOYSTICK))
-			OVRManager.display.RecenterPose();
 	}
 	
 	void MoveWithHydra()
