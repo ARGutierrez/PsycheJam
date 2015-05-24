@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2383316}
   - 114: {fileID: 11446990}
   - 54: {fileID: 5450804}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Monster
   m_TagString: Enemy
   m_Icon: {fileID: 0}

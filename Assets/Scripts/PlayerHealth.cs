@@ -20,10 +20,14 @@ public class PlayerHealth : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             if (!invincible)
+            {
                 takeDamage(5);
+          
+            }
+            //Destroy(collision.gameObject);
         }
     }
 
