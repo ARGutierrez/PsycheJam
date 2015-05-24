@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SpawnMonster : MonoBehaviour {
 
-
+    public float wait = 0f;
     public GameObject monster;
     public float timeBetweenSpawn;
 
@@ -29,7 +29,7 @@ public class SpawnMonster : MonoBehaviour {
 
         player = GameObject.Find("Player 1").transform;
 
-        InvokeRepeating("spawn", 0f, timeBetweenSpawn);
+        InvokeRepeating("spawn", wait, timeBetweenSpawn);
 	}
 	
 	void Update () {

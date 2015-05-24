@@ -2,9 +2,8 @@
 using System.Collections;
 
 public class SharedMonsterBehavior : MonoBehaviour {
-    
-    //idk
-    private float tooLow = -10;
+   
+    private float minimumY = -20;
 
 	// Use this for initialization
 	void Start () 
@@ -20,7 +19,7 @@ public class SharedMonsterBehavior : MonoBehaviour {
 
     void checkForOffscreenDeath()
     {
-        if (transform.position.y < tooLow)
+        if (transform.position.y < minimumY)
         {
             Die();
         }
