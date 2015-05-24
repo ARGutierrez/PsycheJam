@@ -24,6 +24,12 @@ public class MoveTowardTarget : MonoBehaviour {
             wander();
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player")) ;
+            //Destroy(gameObject);
+    }
+
     bool targetIsVisible()
     {
         Vector3 dir = target.position - transform.position;

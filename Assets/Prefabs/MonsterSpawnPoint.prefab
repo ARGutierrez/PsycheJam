@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d454d1af5cc642c408b4931da2034074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 0}
+  monster: {fileID: 111808, guid: 7d72d65c5280373489435b45b1a17966, type: 2}
   timeBetweenSpawn: 1
 --- !u!1001 &100100000
 Prefab:

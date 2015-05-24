@@ -12,7 +12,7 @@ public class PickupObjects : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(numObjects);
+        //Debug.Log(numObjects);
 	}
 
     void OnTriggerEnter(Collider other)
