@@ -557,7 +557,7 @@ GameObject:
   - 114: {fileID: 11400214}
   - 114: {fileID: 11427184}
   m_Layer: 0
-  m_Name: Player with crowbar
+  m_Name: Player with crowba
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
