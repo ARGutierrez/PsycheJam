@@ -28,6 +28,10 @@ public class ScoreDisplay : MonoBehaviour {
 	public GameObject secondsSingles;
 	public GameObject secondsTens;
 	private MeshRenderer[] time;
+	public GameObject healthSingles;
+	public GameObject healthTens;
+	public GameObject healthHundreds;
+	private MeshRenderer[] health;
 
 	[HideInInspector] public int homeScore;
 	private int guestScore;
@@ -44,6 +48,7 @@ public class ScoreDisplay : MonoBehaviour {
 		home = new MeshRenderer[3]{homeSingles.GetComponent<MeshRenderer>(),homeTens.GetComponent<MeshRenderer>(),homeHundreds.GetComponent<MeshRenderer>()};
 		guest = new MeshRenderer[3]{guestSingles.GetComponent<MeshRenderer>(),guestTens.GetComponent<MeshRenderer>(),guestHundreds.GetComponent<MeshRenderer>()};
 		time = new MeshRenderer[4]{secondsSingles.GetComponent<MeshRenderer>(),secondsTens.GetComponent<MeshRenderer>(),minutesSingles.GetComponent<MeshRenderer>(),minutesTens.GetComponent<MeshRenderer>()};
+		health = new MeshRenderer[3]{healthSingles.GetComponent<MeshRenderer>(),healthTens.GetComponent<MeshRenderer>(),healthHundreds.GetComponent<MeshRenderer>()};
 	}
 
 	// Use this for initialization
@@ -51,6 +56,7 @@ public class ScoreDisplay : MonoBehaviour {
 		ResetNumbers (home);
 		ResetNumbers (guest);
 		ResetNumbers (time);
+		ResetNumbers (health);
 	}
 
 	void ResetNumbers(MeshRenderer[] meshes)
@@ -68,6 +74,7 @@ public class ScoreDisplay : MonoBehaviour {
 		}
 		DisplayHomeScore (homeScore);
 		DisplayGuestScore (guestScore);
+		DisplayHealth (GameObject.Find ("Player").GetComponent<PlayerHealth> ().currentHealth);
 	}
 
 	void OnLevelWasLoaded(int level)
@@ -111,5 +118,13 @@ public class ScoreDisplay : MonoBehaviour {
 		guest [1].material = nums [gScore % 10];
 		gScore /= 10;
 		guest [2].material = nums [gScore % 10];
+	}
+	void DisplayHealth(int gScore)
+	{
+		health [0].material = nums [gScore % 10];
+		gScore /= 10;
+		health [1].material = nums [gScore % 10];
+		gScore /= 10;
+		health [2].material = nums [gScore % 10];
 	}
 }

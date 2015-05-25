@@ -655,6 +655,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c33c93cb3e161c840aa1718ad65c8770, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &579304895 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 146770, guid: cecfac1092d663f4ea8fca582226b293, type: 2}
+  m_PrefabInternal: {fileID: 615754951}
 --- !u!1001 &581991929
 Prefab:
   m_ObjectHideFlags: 0
@@ -755,6 +759,14 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 457968, guid: f0287b0764498b744a81ff5dd7a5b762, type: 2}
   m_PrefabInternal: {fileID: 587682982}
+--- !u!1 &593722335 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 161688, guid: cecfac1092d663f4ea8fca582226b293, type: 2}
+  m_PrefabInternal: {fileID: 615754951}
+--- !u!1 &610160703 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 199040, guid: cecfac1092d663f4ea8fca582226b293, type: 2}
+  m_PrefabInternal: {fileID: 615754951}
 --- !u!1001 &615754951
 Prefab:
   m_ObjectHideFlags: 0
@@ -794,6 +806,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 11497652, guid: cecfac1092d663f4ea8fca582226b293, type: 2}
+      propertyPath: healthSingles
+      value: 
+      objectReference: {fileID: 593722335}
+    - target: {fileID: 11497652, guid: cecfac1092d663f4ea8fca582226b293, type: 2}
+      propertyPath: healthTens
+      value: 
+      objectReference: {fileID: 610160703}
+    - target: {fileID: 11497652, guid: cecfac1092d663f4ea8fca582226b293, type: 2}
+      propertyPath: healthHundreds
+      value: 
+      objectReference: {fileID: 579304895}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cecfac1092d663f4ea8fca582226b293, type: 2}
   m_IsPrefabParent: 0
@@ -1043,6 +1067,79 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 391abdfbd69aa244087f45340f31e81a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1026407310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1026407314}
+  - 33: {fileID: 1026407313}
+  - 64: {fileID: 1026407312}
+  - 23: {fileID: 1026407311}
+  m_Layer: 0
+  m_Name: Quad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &1026407311
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026407310}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 2344565f3016a28408bb3cb9ff922d17, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!64 &1026407312
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026407310}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &1026407313
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026407310}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1026407314
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1026407310}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.0999999, y: 36.2999992, z: 180.600006}
+  m_LocalScale: {x: 30, y: 8, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
 --- !u!4 &1045883257 stripped
 Transform:
   m_PrefabParentObject: {fileID: 434920, guid: c33c93cb3e161c840aa1718ad65c8770, type: 2}
