@@ -127,6 +127,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11494180, guid: af5a3640eaa2ccc41b81d19579c95584, type: 2}
+      propertyPath: explosionParticles
+      value: 
+      objectReference: {fileID: 138182, guid: 1e52e6031921be248958ee931fd10972, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: af5a3640eaa2ccc41b81d19579c95584, type: 2}
   m_IsPrefabParent: 0
@@ -201,7 +205,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 179684, guid: 803f33fb6a74e1e49ba0668893cdca00, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 803f33fb6a74e1e49ba0668893cdca00, type: 2}
@@ -247,7 +251,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 125122, guid: 88dc7859b48dff04b83c688dcc87e8b1, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11447384, guid: 88dc7859b48dff04b83c688dcc87e8b1, type: 2}
       propertyPath: timeBetweenSpawn
@@ -694,7 +698,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 110728, guid: b24d47555c03f7e4cb5a52d4aaa1a0d1, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11445200, guid: b24d47555c03f7e4cb5a52d4aaa1a0d1, type: 2}
       propertyPath: timeBetweenSpawn
