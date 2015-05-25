@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour {
     public int maxHealth = 100;
     public int currentHealth;
 
+    private float minimumY = -100f;
+
 	// Use this for initialization
 	void Start () {
         currentHealth = maxHealth;
@@ -15,7 +17,8 @@ public class PlayerHealth : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        if (transform.position.y < minimumY)
+            gameOver();
 	}
 
     void OnCollisionEnter(Collision collision)
@@ -41,6 +44,11 @@ public class PlayerHealth : MonoBehaviour {
 
     public void gameOver()
     {
-        Application.LoadLevel("GameOver");
+        if (Application.loadedLevelName == "GameOver2") 
+            Application.LoadLevel("Level0");
+        else if (Application.loadedLevelName == "Level0") 
+            Application.LoadLevel("GameOver2");
+        else
+            Debug.Log("???" + Application.loadedLevelName);
     }
 }
