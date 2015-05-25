@@ -5,6 +5,11 @@ public class SpawnMonster : MonoBehaviour {
 
     public float wait = 0f;
     public GameObject monster;
+
+    public bool burstSpawn = false;
+    public float timeBetweenBursts;
+    public int burstSize;
+
     public float timeBetweenSpawn;
 
     //all spawners will see these static variables
@@ -29,23 +34,44 @@ public class SpawnMonster : MonoBehaviour {
 
         player = GameObject.Find("Player").transform;
 
-        InvokeRepeating("spawn", wait, timeBetweenSpawn);
+        if (burstSpawn)
+            InvokeRepeating("startBurstSpawn", wait, timeBetweenBursts);
+        else
+            InvokeRepeating("spawn", wait, timeBetweenSpawn);
 	}
 	
 	void Update () {
-        //Debug.Log("Current:" + currentMonsters);
-        //Debug.Log("Max:" + maxMonsters);
+
     }
 
     void spawn()
     {
-        Debug.Log("Current:" + currentMonsters);
-        Debug.Log("Max:" + maxMonsters);
         if (currentMonsters < maxMonsters)
         {
             Instantiate(monster, transform.position, Quaternion.identity);
             if (randomizeLocation)
                 randomizePosition();
+        }
+    }
+
+    void startBurstSpawn()
+    {
+        StartCoroutine(burstSpawning(burstSize));
+    }
+
+    IEnumerator burstSpawning(int size)
+    {
+
+        int i = 0;
+        while (i < size)
+        {
+            Debug.Log("Test");
+            if (currentMonsters < maxMonsters)
+            {
+                Instantiate(monster, transform.position, Quaternion.identity);
+                i++;
+            }
+            yield return new WaitForSeconds(timeBetweenSpawn); //wait 1 second per interval
         }
     }
 
