@@ -557,7 +557,7 @@ GameObject:
   - 114: {fileID: 11400214}
   - 114: {fileID: 11427184}
   m_Layer: 0
-  m_Name: Player with crowba
+  m_Name: Player with crowbar
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -869,7 +869,6 @@ GameObject:
   - 65: {fileID: 6518726}
   - 65: {fileID: 6547718}
   - 114: {fileID: 11456878}
-  - 114: {fileID: 11482972}
   m_Layer: 8
   m_Name: Crowbar
   m_TagString: Untagged
@@ -1111,7 +1110,7 @@ Transform:
   - {fileID: 451590}
   - {fileID: 411750}
   m_Father: {fileID: 417436}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!4 &406100
 Transform:
   m_ObjectHideFlags: 1
@@ -1290,9 +1289,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 405668}
   - {fileID: 431162}
   - {fileID: 456212}
-  - {fileID: 405668}
   - {fileID: 471054}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1371,7 +1370,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 417436}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &434936
 Transform:
   m_ObjectHideFlags: 1
@@ -1620,7 +1619,7 @@ Transform:
   m_Children:
   - {fileID: 477766}
   m_Father: {fileID: 417436}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &458878
 Transform:
   m_ObjectHideFlags: 1
@@ -1691,7 +1690,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.323000014, z: 0}
+  m_LocalPosition: {x: 0, y: -.323000014, z: -.0209999997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 417436}
@@ -1837,9 +1836,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178772}
-  m_LocalRotation: {x: .605305195, y: .632548571, z: .334077477, w: .349113554}
-  m_LocalPosition: {x: .109000094, y: .0610000975, z: .273999989}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: .0625261143, y: .71717155, z: .689702928, w: -.077880621}
+  m_LocalPosition: {x: -.0140000004, y: -.00899999961, z: .731000006}
+  m_LocalScale: {x: 2.20888615, y: 2.20888495, z: 2.20888495}
   m_Children: []
   m_Father: {fileID: 451590}
   m_RootOrder: 2
@@ -2200,7 +2199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 523dcb90de2b11841a6d548b74cf32d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincible: 0
+  invincible: 1
   maxHealth: 100
   currentHealth: 0
 --- !u!114 &11403108
@@ -2352,7 +2351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed579e459583f84e9fc5c443c25a940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 2373.62012
+  force: 5000
   explosionPointOffset: {x: 0, y: 0, z: 0}
   radius: .200000003
 --- !u!114 &11461646
@@ -2386,18 +2385,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &11482972
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 178772}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6b2ef7a67196ff4d96a2be1aeab92aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ball: {fileID: 411750}
 --- !u!114 &11488694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2409,14 +2396,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0950df82e7936c84983497630bde5b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Acceleration: .300000012
+  Acceleration: .100000001
   Damping: .300000012
   BackAndSideDampen: .5
   JumpForce: .300000012
   RotationAmount: 1
   RotationRatchet: 45
   HmdResetsY: 0
-  HmdRotatesY: 1
+  HmdRotatesY: 0
   GravityModifier: 1
   useProfileData: 1
 --- !u!114 &11490888
