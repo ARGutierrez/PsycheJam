@@ -29,11 +29,11 @@ public class ScoreDisplay : MonoBehaviour {
 	public GameObject secondsTens;
 	private MeshRenderer[] time;
 
-	private int homeScore;
+	[HideInInspector] public int homeScore;
 	private int guestScore;
-	private int timeInSeconds;
 	private float startTime;
 	private float timeElapsed;
+
 
 	void Awake(){
 		startTime = Time.time;
@@ -60,7 +60,12 @@ public class ScoreDisplay : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timeElapsed = Time.time - startTime;
-		timeInSeconds = (int)timeElapsed;
+		DisplayTime ((int)timeElapsed);
+		DisplayHomeScore (homeScore);
+	}
+
+	void DisplayTime(int timeInSeconds)
+	{
 		time[0].material = nums[timeInSeconds % 10];
 		timeInSeconds /= 10;
 		time[1].material = nums [timeInSeconds % 6];
@@ -68,5 +73,14 @@ public class ScoreDisplay : MonoBehaviour {
 		time [2].material = nums [timeInSeconds % 10];
 		timeInSeconds /= 10;
 		time [3].material = nums [timeInSeconds % 10];
+	}
+
+	void DisplayHomeScore(int hScore)
+	{
+		home [0].material = nums [hScore % 10];
+		hScore /= 10;
+		home [1].material = nums [hScore % 10];
+		hScore /= 10;
+		home [2].material = nums [hScore % 10];
 	}
 }

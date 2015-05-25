@@ -10,11 +10,14 @@ public class SharedMonsterBehavior : MonoBehaviour {
     private float maximumX = 100;
     private float maximumZ = 100;
 
+	private ScoreDisplay score;
+
     public GameObject explosionParticles;
 	// Use this for initialization
 	void Start () 
     {
         SpawnMonster.currentMonsters++;
+		score = GameObject.Find ("Scoreboard").GetComponent<ScoreDisplay> ();
 	}
 	
 	// Update is called once per frame
@@ -32,7 +35,8 @@ public class SharedMonsterBehavior : MonoBehaviour {
         }
         if (transform.position.x > maximumX || transform.position.x < minimumX ||
             transform.position.z > maximumZ || transform.position.z < minimumZ)
-        {
+		{
+			score.homeScore++;
             Instantiate(explosionParticles, transform.position, Quaternion.identity);
             Die();
             return;
