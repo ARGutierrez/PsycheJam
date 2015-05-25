@@ -44,9 +44,10 @@ public class PlayerHealth : MonoBehaviour {
 
     public void gameOver()
     {
-        if (Application.loadedLevelName == "GameOver2") 
-            Application.LoadLevel("Level0");
-        else if (Application.loadedLevelName == "Level0") 
+		string level = Application.loadedLevelName;
+        if (level == "GameOver2") 
+            Application.LoadLevel("Level1");
+        else if (level == "Level0" || level == "Level1") 
             Application.LoadLevel("GameOver2");
         else
             Debug.Log("???" + Application.loadedLevelName);
