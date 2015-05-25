@@ -14,11 +14,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/SixenseInput/DemoScenes/SixenseHands.unity
   - enabled: 0
-    path: Assets/Level0.unity
+    path: Assets/Level1_vincent.unity
+  - enabled: 0
+    path: Assets/Level0_vincent.unity
   - enabled: 0
     path: Assets/vincent4.unity
   - enabled: 1
-    path: Assets/Level0_vincent.unity
+    path: Assets/Level0.unity
   - enabled: 1
     path: Assets/GameOver2.unity
   - enabled: 1

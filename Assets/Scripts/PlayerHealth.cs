@@ -30,7 +30,7 @@ public class PlayerHealth : MonoBehaviour {
                 takeDamage(5);
           
             }
-            //Destroy(collision.gameObject);
+            Destroy(collision.gameObject);
         }
     }
 

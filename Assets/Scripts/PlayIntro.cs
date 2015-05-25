@@ -20,15 +20,24 @@ public class PlayIntro : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         audioSource = GetComponent<AudioSource>();
-        clips = new AudioClip[8];
-        clips[0] = intro01;
-        clips[1] = intro02;
-        clips[2] = chooseClip(intro03);
-        clips[3] = chooseClip(intro04);
-        clips[4] = chooseClip(intro05);
-        clips[5] = intro06;
-        clips[6] = chooseClip(intro07);
-        clips[7] = kids;
+		clips = new AudioClip[8]{
+			intro01,
+			kids,
+			intro02,
+			chooseClip (intro03),
+			chooseClip (intro04),
+			chooseClip (intro05),
+			intro06,
+			chooseClip(intro07)
+		};
+//        clips[0] = intro01;
+//        clips[1] = intro02;
+//        clips[2] = chooseClip(intro03);
+//        clips[3] = chooseClip(intro04);
+//        clips[4] = chooseClip(intro05);
+//        clips[5] = intro06;
+//        clips[6] = chooseClip(intro07);
+//        clips[7] = kids;
 
         audioSource.Play();
         
