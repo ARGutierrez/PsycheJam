@@ -5,6 +5,12 @@ public class SharedMonsterBehavior : MonoBehaviour {
    
     private float minimumY = -20;
 
+    private float minimumX = -100;
+    private float minimumZ = -100;
+    private float maximumX = 100;
+    private float maximumZ = 100;
+
+    public GameObject explosionParticles;
 	// Use this for initialization
 	void Start () 
     {
@@ -22,6 +28,14 @@ public class SharedMonsterBehavior : MonoBehaviour {
         if (transform.position.y < minimumY)
         {
             Die();
+            return;
+        }
+        if (transform.position.x > maximumX || transform.position.x < minimumX ||
+            transform.position.z > maximumZ || transform.position.z < minimumZ)
+        {
+            Instantiate(explosionParticles, transform.position, Quaternion.identity);
+            Die();
+            return;
         }
     }
 
@@ -30,6 +44,5 @@ public class SharedMonsterBehavior : MonoBehaviour {
         Destroy(this.gameObject);
         SpawnMonster.currentMonsters--;
     }
-
-    
+   
 }

@@ -27,19 +27,20 @@ public class SpawnMonster : MonoBehaviour {
         boundaryMinZ = GameObject.Find("Boundary").transform.position.z;
         boundaryMaxZ = GameObject.Find("BoundaryXZ").transform.position.z;
 
-        player = GameObject.Find("Player 1").transform;
+        player = GameObject.Find("Player").transform;
 
         InvokeRepeating("spawn", wait, timeBetweenSpawn);
 	}
 	
 	void Update () {
-        //randomizePosition();
-        Debug.Log("Current:" + currentMonsters);
-        Debug.Log("Max:" + maxMonsters);
+        //Debug.Log("Current:" + currentMonsters);
+        //Debug.Log("Max:" + maxMonsters);
     }
 
     void spawn()
     {
+        Debug.Log("Current:" + currentMonsters);
+        Debug.Log("Max:" + maxMonsters);
         if (currentMonsters < maxMonsters)
         {
             Instantiate(monster, transform.position, Quaternion.identity);

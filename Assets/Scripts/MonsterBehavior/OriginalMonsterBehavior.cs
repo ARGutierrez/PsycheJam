@@ -13,7 +13,7 @@ public class OriginalMonsterBehavior : MonoBehaviour
 
     void Start()
     {
-        target = GameObject.Find("Player 1").transform;
+        target = GameObject.Find("Player").transform;
         wanderDir = new Vector3(Random.Range(0f, 1f), 0.0f, Random.Range(0f, 1f));
         transform.Rotate(wanderDir);
     }
