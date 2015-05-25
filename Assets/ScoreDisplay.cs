@@ -29,13 +29,15 @@ public class ScoreDisplay : MonoBehaviour {
 	public GameObject secondsTens;
 	private MeshRenderer[] time;
 
-	private int homeScore;
+	[HideInInspector] public int homeScore;
 	private int guestScore;
-	private int timeInSeconds;
 	private float startTime;
 	private float timeElapsed;
+	private string levelName;
+
 
 	void Awake(){
+		DontDestroyOnLoad(transform.gameObject);
 		startTime = Time.time;
 		nums = new Material[11]{zero, one, two, three, four, five, six, seven,
 			eight, nine, blank};
@@ -46,21 +48,45 @@ public class ScoreDisplay : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		foreach (MeshRenderer mr in home) {
-			mr.material = zero;
-		}
-		foreach (MeshRenderer mr in guest) {
-			mr.material = zero;
-		}
-		foreach (MeshRenderer mr in time) {
-			mr.material = zero;
-		}
+		ResetNumbers (home);
+		ResetNumbers (guest);
+		ResetNumbers (time);
 	}
-	
+
+	void ResetNumbers(MeshRenderer[] meshes)
+	{
+		foreach (MeshRenderer mr in meshes)
+			mr.material = zero;
+	}
+
 	// Update is called once per frame
 	void Update () {
-		timeElapsed = Time.time - startTime;
-		timeInSeconds = (int)timeElapsed;
+		levelName = Application.loadedLevelName;
+		if (levelName != "GameOver2") {
+			timeElapsed = Time.time - startTime;
+			DisplayTime ((int)timeElapsed);
+		}
+		DisplayHomeScore (homeScore);
+		DisplayGuestScore (guestScore);
+	}
+
+	void OnLevelWasLoaded(int level)
+	{
+		if (level == 0) {
+			ResetNumbers (home);
+			ResetNumbers (guest);
+			ResetNumbers (time);
+		} else if (level == 2) {
+			ResetNumbers (home);
+			ResetNumbers (time);
+			startTime = Time.time;
+		} else if (level == 1) {
+			++guestScore;
+		}
+	}
+
+	void DisplayTime(int timeInSeconds)
+	{
 		time[0].material = nums[timeInSeconds % 10];
 		timeInSeconds /= 10;
 		time[1].material = nums [timeInSeconds % 6];
@@ -68,5 +94,22 @@ public class ScoreDisplay : MonoBehaviour {
 		time [2].material = nums [timeInSeconds % 10];
 		timeInSeconds /= 10;
 		time [3].material = nums [timeInSeconds % 10];
+	}
+
+	void DisplayHomeScore(int hScore)
+	{
+		home [0].material = nums [hScore % 10];
+		hScore /= 10;
+		home [1].material = nums [hScore % 10];
+		hScore /= 10;
+		home [2].material = nums [hScore % 10];
+	}
+	void DisplayGuestScore(int gScore)
+	{
+		guest [0].material = nums [gScore % 10];
+		gScore /= 10;
+		guest [1].material = nums [gScore % 10];
+		gScore /= 10;
+		guest [2].material = nums [gScore % 10];
 	}
 }
