@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour {
     public int maxHealth = 100;
     public int currentHealth;
 
-    private float minimumY = -100f;
+    public float minimumY = -1000f;
 
 	public AudioClip[] hurtSounds;
 	private AudioSource asource;
