@@ -12,6 +12,7 @@ public class PlayIntro : MonoBehaviour {
     public AudioClip intro06;
     public AudioClip[] intro07;
     public AudioClip kids;
+	public AudioClip MLG;
 
     private AudioClip[] clips;
     private int clipCount;
@@ -20,7 +21,7 @@ public class PlayIntro : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         audioSource = GetComponent<AudioSource>();
-		clips = new AudioClip[8]{
+		clips = new AudioClip[9]{
 			intro01,
 			kids,
 			intro02,
@@ -28,16 +29,9 @@ public class PlayIntro : MonoBehaviour {
 			chooseClip (intro04),
 			chooseClip (intro05),
 			intro06,
-			chooseClip(intro07)
+			chooseClip(intro07),
+			MLG
 		};
-//        clips[0] = intro01;
-//        clips[1] = intro02;
-//        clips[2] = chooseClip(intro03);
-//        clips[3] = chooseClip(intro04);
-//        clips[4] = chooseClip(intro05);
-//        clips[5] = intro06;
-//        clips[6] = chooseClip(intro07);
-//        clips[7] = kids;
 
         audioSource.Play();
         
@@ -55,15 +49,13 @@ public class PlayIntro : MonoBehaviour {
             if (!audioSource.isPlaying)
             {
                 audioSource.clip = clips[clipCount++];
-                //clipCount++;
                 audioSource.Play();
             }
         }
-        else
-        {
-            Destroy(gameObject);
-
-        }
+//        else
+//        {
+//            Destroy(gameObject);
+//        }
 
 	
 	}

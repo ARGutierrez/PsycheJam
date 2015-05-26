@@ -10,8 +10,12 @@ public class PlayerHealth : MonoBehaviour {
 
     private float minimumY = -100f;
 
+	public AudioClip[] hurtSounds;
+	private AudioSource asource;
+
 	// Use this for initialization
 	void Start () {
+		asource = GetComponent<AudioSource> ();
         currentHealth = maxHealth;
 	}
 	
@@ -21,15 +25,19 @@ public class PlayerHealth : MonoBehaviour {
             gameOver();
 	}
 
-    void OnCollisionEnter(Collision collision)
+	AudioClip chooseClip(AudioClip[] array)
+	{
+		return array[Random.Range(0, array.Length)];
+	}
+
+    void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+			asource.clip = chooseClip (hurtSounds);
+			asource.Play();
             if (!invincible)
-            {
                 takeDamage(5);
-          
-            }
             Destroy(collision.gameObject);
         }
     }

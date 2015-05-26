@@ -27,6 +27,7 @@ public class PushEnemy : MonoBehaviour {
 	{
 		if (other.gameObject.CompareTag ("Enemy")) 
 		{
+			audioSource = other.gameObject.GetComponent<AudioSource>();
 			audioSource.clip = chooseClip (clips);
 			audioSource.Play ();
 
